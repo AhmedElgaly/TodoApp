@@ -1,54 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <androidx.cardview.widget.CardView
+    <data>
+        <variable
+            name="Task"
+            type="com.example.todoapp.db.Note" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <androidx.cardview.widget.CardView
+            android:id="@+id/TaskView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="7dp">
+            android:layout_marginBottom="3dp">
 
-            <TextView
-                android:id="@+id/textViewStatus"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="5dp"
-                android:background="@color/colorPrimaryDark"
-                android:text="Completed"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
-                android:textColor="@color/colorLight"
-                android:textStyle="bold" />
+                android:orientation="vertical"
+                android:padding="7dp">
 
-            <TextView
-                android:id="@+id/textViewTask"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Go Bring Eggs"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
+                <TextView
+                    android:id="@+id/textViewStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="Completed"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:textColor="@color/colorLight"
+                    android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/textViewDesc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Bring 6 eggs from super market"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                <TextView
+                    android:id="@+id/textViewTask"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{Task.task}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
 
-            <TextView
-                android:id="@+id/textViewFinishBy"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="5pm today"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+                <TextView
+                    android:id="@+id/textViewDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{Task.desc}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+                <TextView
+                    android:id="@+id/textViewFinishBy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@{Task.finishBy}"
+                    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
 
-        </LinearLayout>
+            </LinearLayout>
 
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+    </RelativeLayout>
+</layout>

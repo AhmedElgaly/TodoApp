@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="8dp"
-    tools:context=".view.MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-  <androidx.recyclerview.widget.RecyclerView
+  <data>
+  <variable
+      name="MainPresenter"
+      type="com.example.todoapp.presenters.MainPresenter" />
+  </data>
+
+  <RelativeLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:id="@+id/notes_recycle"
-      />
+      android:padding="8dp"
+      tools:context=".view.MainActivity">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/notes_recycle" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floating_button_add"
@@ -20,9 +27,11 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         android:layout_margin="8dp"
+        android:onClick="@{()->MainPresenter.GoToAddNote()}"
         android:backgroundTint="@color/colorPrimaryDark"
         android:src="@drawable/ic_add"
         android:tint="@color/colorLight"
-        app:fabSize="normal"/>
+        app:fabSize="normal" />
 
-</RelativeLayout>
+  </RelativeLayout>
+</layout>
