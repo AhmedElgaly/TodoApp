@@ -1,74 +1,95 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".view.UpdateTaskActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <data>
+
+        <import type="android.view.View"/>
+
+        <variable
+            name="Note"
+            type="com.example.todoapp.db.Note" />
+        <variable
+            name="UpdatePresenter"
+            type="com.example.todoapp.presenters.UpdateTaskPreesnter" />
+    </data>
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent"
+        tools:context=".view.UpdateTaskActivity">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="15dp"
-            android:text="Update Task"
-            android:textAlignment="center"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <EditText
-            android:id="@+id/editTextTask"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="task?" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:text="Update Task"
+                android:textAlignment="center"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Headline" />
 
-        <EditText
-            android:id="@+id/editTextDesc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="description..." />
+            <EditText
+                android:id="@+id/editTextTask"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={UpdatePresenter.TextTask}"
+                android:hint="task?" />
 
-        <EditText
-            android:id="@+id/editTextFinishBy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="finish by?" />
+            <EditText
+                android:id="@+id/editTextDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={UpdatePresenter.TextDesc}"
+                android:hint="description..." />
 
-        <CheckBox
-            android:id="@+id/checkBoxFinished"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mark as finished" />
+            <EditText
+                android:id="@+id/editTextFinishBy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@={UpdatePresenter.TextFinishBy}"
+                android:hint="finish by?" />
 
-        <Button
-            android:id="@+id/button_update"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="@color/colorPrimary"
-            android:text="Update"
-            android:textAllCaps="false"
-            android:textColor="@color/colorLight" />
+            <CheckBox
+                android:id="@+id/checkBoxFinished"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="@={UpdatePresenter.finished}"
+                android:text="Mark as finished" />
 
-
-        <Button
-            android:id="@+id/button_delete"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="15dp"
-            android:background="@color/colorRed"
-            android:text="Delete"
-            android:textAllCaps="false"
-            android:textColor="@color/colorLight" />
-
-
-    </LinearLayout>
+            <Button
+                android:id="@+id/button_update"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorPrimary"
+                android:text="Update"
+                android:onClick="@{()->UpdatePresenter.updateTask(Note)}"
+                android:textAllCaps="false"
+                android:textColor="@color/colorLight" />
 
 
-</RelativeLayout>
+            <Button
+                android:id="@+id/button_delete"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="15dp"
+                android:background="@color/colorRed"
+                android:onClick="@{()->UpdatePresenter.deleteTask(Note)}"
+                android:text="Delete"
+                android:textAllCaps="false"
+                android:textColor="@color/colorLight" />
+
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>
